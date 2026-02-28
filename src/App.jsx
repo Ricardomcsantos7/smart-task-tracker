@@ -15,11 +15,19 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
+  const toggleTask = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task,
+      ),
+    );
+  };
+
   return (
     <div>
       <h1>Smart Task Tracker</h1>
       <TaskForm addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} toggleTask={toggleTask} />
     </div>
   );
 }
