@@ -23,11 +23,15 @@ function App() {
     );
   };
 
+  const deleteTask = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  };
+
   return (
     <div>
       <h1>Smart Task Tracker</h1>
       <TaskForm addTask={addTask} />
-      <TaskList tasks={tasks} toggleTask={toggleTask} />
+      <TaskList tasks={tasks} toggleTask={toggleTask} deleteTask={deleteTask} />
     </div>
   );
 }

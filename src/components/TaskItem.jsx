@@ -1,13 +1,32 @@
-function TaskItem({ task, toggleTask }) {
+function TaskItem({ task, toggleTask, deleteTask }) {
   return (
     <li
-      onClick={() => toggleTask(task.id)}
       style={{
-        textDecoration: task.completed ? "line-through" : "none",
-        cursor: "pointer",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: "8px",
       }}
     >
-      {task.text}
+      <span
+        onClick={() => toggleTask(task.id)}
+        style={{
+          textDecoration: task.completed ? "line-through" : "none",
+          cursor: "pointer",
+        }}
+      >
+        {task.text}
+      </span>
+
+      <button
+        onClick={() => deleteTask(task.id)}
+        style={{
+          marginLeft: "10px",
+          cursor: "pointer",
+        }}
+      >
+        &#10060; Remove
+      </button>
     </li>
   );
 }
