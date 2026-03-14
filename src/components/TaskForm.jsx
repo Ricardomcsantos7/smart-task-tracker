@@ -12,7 +12,7 @@ function TaskForm({ addTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
