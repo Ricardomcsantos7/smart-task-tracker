@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 
@@ -26,6 +26,18 @@ function App() {
   const deleteTask = (id) => {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks");
+
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <div>
