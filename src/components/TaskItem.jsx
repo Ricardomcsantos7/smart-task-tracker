@@ -8,7 +8,9 @@ function TaskItem({ task, toggleTask, deleteTask }) {
         {task.text}
       </span>
 
-      <button onClick={() => deleteTask(task.id)}>&#10060; Remove</button>
+      <button className="delete-btn" onClick={() => deleteTask(task.id)}>
+        X
+      </button>
     </li>
   );
 }
