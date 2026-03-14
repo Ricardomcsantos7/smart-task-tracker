@@ -114,7 +114,9 @@ ul {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #eee;
-  transition: background 0.2s;
+
+  transition: background 0.2s ease;
+  animation: fadeIn 0.7s ease;
 }
 
 .task:hover {
@@ -123,6 +125,8 @@ ul {
 
 .task span {
   cursor: pointer;
+
+  transition: all 0.5s ease;
 }
 
 .task span.completed {
@@ -144,4 +148,35 @@ ul {
 .delete-btn:hover {
   color: white;
   background: #ef4444;
+}
+
+/* Hide delete button by default */
+.task .delete-btn {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Show on hover */
+.task:hover .delete-btn {
+  opacity: 1;
+}
+
+/* Fade out animation */
+.task.removing {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
